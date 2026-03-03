@@ -15,3 +15,11 @@ Implementación manual y detallada del estándar ERC-20. Programar las entrañas
 ## Conceptos Clave
 - **Los Cimientos de DeFi:** Antes de crear plataformas de préstamos (lending) o exchanges descentralizados (DEXs), necesitamos un activo económico subyacente. El `JamToken` (`JAM`) servirá como nuestro vehículo de valor para el ecosistema DeFi de nuestro proyecto final.
 - **Estándares y Componibilidad:** Entenderemos por qué construir siguiendo estrictamente las reglas de interfaz (ej: usar exactamente `transferFrom`) garantiza que nuestro nuevo token sea compatible inmediatamente con herramientas globales como MetaMask o Uniswap.
+
+### 2. Ecosistema Multi-Token (Pares Liquidez)
+**Archivo:** `2_stellar_token.sol`
+
+Implementación de `StellarToken` (STE), el segundo pilar de nuestro incipiente ecosistema DeFi. Estructuralmente es idéntico al Jam Token, pero conceptualmente es la pieza que desbloquea las verdaderas finanzas descentralizadas.
+- **Pares de Criptoactivos:** En el mercado financiero real, las transacciones siempre involucran dos activos (Ej: Dólares por Oro). En DeFi, las plataformas de intercambio (DEX) requieren la suma de dos tokens para operar, formando un "Par de Liquidez" (Token A / Token B).
+- **El Par JAM/STE:** Al crear Stellar, formamos nuestro primer par comercial de prueba. Sobre esta base construiremos, en capítulos más avanzados, piscinas de liquidez (Liquidity Pools) y Automated Market Makers (AMM).
+- **Doble Aprobación (Approve):** Un repaso clave sobre cómo, para que un Exchange pueda intercambiar JAM por STE a tu favor, el usuario debe haber invocado la función `approve` favorablemente para el protocolo en AMBOS contratos inteligentes.
