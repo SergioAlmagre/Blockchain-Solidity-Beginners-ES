@@ -5,9 +5,9 @@ pragma solidity ^0.8.4;
  * @title Custom ERC20 Token
  * @dev En este ejemplo, importamos una implementación local del estándar ERC20.
  * A diferencia del ejemplo anterior que usaba OpenZeppelin, aquí se asume que
- * el archivo ERC20.sol está en la misma carpeta.
+ * el archivo 3_interfaz_ERC20.sol está en la misma carpeta.
  */
-import "./ERC20.sol";
+import "./3_interfaz_ERC20.sol";
 
 /**
  * @notice Contrato que hereda de la implementación local de ERC20.
