@@ -22,4 +22,15 @@ Implementación manual y detallada del estándar ERC-20. Programar las entrañas
 Implementación de `StellarToken` (STE), el segundo pilar de nuestro incipiente ecosistema DeFi. Estructuralmente es idéntico al Jam Token, pero conceptualmente es la pieza que desbloquea las verdaderas finanzas descentralizadas.
 - **Pares de Criptoactivos:** En el mercado financiero real, las transacciones siempre involucran dos activos (Ej: Dólares por Oro). En DeFi, las plataformas de intercambio (DEX) requieren la suma de dos tokens para operar, formando un "Par de Liquidez" (Token A / Token B).
 - **El Par JAM/STE:** Al crear Stellar, formamos nuestro primer par comercial de prueba. Sobre esta base construiremos, en capítulos más avanzados, piscinas de liquidez (Liquidity Pools) y Automated Market Makers (AMM).
-- **Doble Aprobación (Approve):** Un repaso clave sobre cómo, para que un Exchange pueda intercambiar JAM por STE a tu favor, el usuario debe haber invocado la función `approve` favorablemente para el protocolo en AMBOS contratos inteligentes.
+### 3. Yield Farming y Staking
+**Archivo:** `3_token_farm.sol`
+
+El núcleo de nuestro ecosistema DeFi. El contrato `TokenFarm` actúa como un banco descentralizado que vincula a `JamToken` y a `StellarToken` mediante mecanismos de incentivos financieros.
+- **Interacción entre Contratos:** Cómo un Smart Contract principal (`TokenFarm`) puede guardar la dirección e interactuar directamente con funciones de contratos subyacentes (`jamToken.transferFrom(...)`).
+- **Staking (Bloqueo de Valor):** Mecánica en la cual los usuarios confinan (bloquean) sus tokens JAM dentro del contrato a cambio de la promesa de un rendimiento. Todo manejado de forma `trustless` por el código.
+- **Yield Farming (Cosecha de Rendimientos):** Lógica matemática programada donde el administrador (owner) reparte tokens nativos recién acuñados (Stellar - STE) proporcionales a la cantidad de liquidez (JAM) que los usuarios depositaron en la granja.
+- **El flujo transaccional DeFi:** 
+  1. El usuario invoca `approve` en JamToken.
+  2. El usuario invoca `stakeTokens` en TokenFarm.
+  3. El owner invoca `issueTokens` y paga las recompensas en StellarToken.
+  4. El usuario invoca `unstakeTokens` para recuperar indemne sus JAM iniciales.
